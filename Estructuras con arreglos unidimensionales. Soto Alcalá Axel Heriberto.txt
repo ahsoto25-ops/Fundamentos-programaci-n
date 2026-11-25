@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct{
+    int id_cliente;
+    char nombre[50];
+}Cliente;
+
+typedef struct{
+    int codigo_producto;
+    char nombre[50];
+    float precio;
+}Producto;
+
+typedef struct{
+    Cliente cliente;
+    Producto productos[3];
+}Venta;
+
+int main() {
+    Venta ventas[5];
+    int i,j;
+    for(i=0; i<5; i++){
+        // RECORRE LAS VENTAS
+        printf("ID del cliente: ");
+        scanf("%d",&ventas[i].cliente.id_cliente);
+        printf("Nombre del cliente: ");
+        scanf("%s",ventas[i].cliente.nombre);
+        for(j=0; j<3; j++){
+            //RECORRE LOS PRODUCTOS
+            printf("Código del producto: ");
+            scanf("%d",&ventas[i].productos[j].codigo_producto);
+            printf("Nombre del producto: ");
+            scanf("%s",ventas[i].productos[j].nombre);
+            printf("Precio del producto: ");
+            scanf("%2f",&ventas[i].productos[j].precio);
+        }
+    }
+    printf("==========TICKET==========\n");
+    for(i=0; i<5; i++){
+        float total_venta=0;
+        printf("Folio de la venta: %d\n",i+1);
+        printf("ID del cliente: %d\n",ventas[i].cliente.id_cliente);
+        printf("Nombre del cliente: %s\n",ventas[i].cliente.nombre);
+        for(j=0; j<3; j++){
+            printf("Codigo del producto: %d\n",ventas[i].productos[j].codigo_producto);
+            printf("Nombre del producto: %s\n",ventas[i].productos[j].nombre);
+            printf("Precio del producto: %.2f\n",ventas[i].productos[j].precio);
+            total_venta+=ventas[i].productos[j].precio;
+        }
+        printf("El total de la venta es: %.2f\n",total_venta);
+        printf("--------------------------------\n");
+    }
+    return 0;
+}

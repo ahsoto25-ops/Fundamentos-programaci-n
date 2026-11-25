@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct{
+    int id_cliente;
+    char nombre[50];
+    char telefono[20];
+}Clientes;
+
+typedef struct{
+    int codigo;
+    char nombre[50];
+    float precio;
+}Productos;
+
+typedef struct{
+    Clientes cliente1;
+    Productos producto1;
+    int cantidad_comprada;
+}Venta;
+
+int main() {
+    float total_venta=0;
+    Venta venta1;
+    printf("Ingresa el id del cliente\n");
+    scanf("%d",&venta1.cliente1.id_cliente);
+    printf("Ingresa el nombre del cliente\n");
+    scanf("%s",venta1.cliente1.nombre);
+    printf("Ingresa el teléfono del cliente\n");
+    scanf("%s",venta1.cliente1.telefono);
+    printf("Ingresa el código del producto\n");
+    scanf("%d",&venta1.producto1.codigo);
+    printf("Ingresa el nombre del producto\n");
+    scanf("%s",venta1.producto1.nombre);
+    printf("Ingresa el precio del producto\n");
+    scanf("%f",&venta1.producto1.precio);
+    printf("Ingresa la cantidad a comprar\n");
+    scanf("%d",&venta1.cantidad_comprada);
+    total_venta=venta1.cantidad_comprada*venta1.producto1.precio;
+    printf("=====TICKET=====\n");
+    printf("ID del cliente:............. %d\n",venta1.cliente1.id_cliente);
+    printf("Nombre del cliente:......... %s\n",venta1.cliente1.nombre);
+    printf("Teléfono del cliente:....... %s\n",venta1.cliente1.telefono);
+    printf("Código del producto:........ %d\n",venta1.producto1.codigo);
+    printf("Nombre del producto:........ %s\n",venta1.producto1.nombre);
+    printf("Precio del producto:........ %.2f\n",venta1.producto1.precio);
+    printf("Cantidad comprada:.......... %d\n",venta1.cantidad_comprada);
+    printf("Total de la venta:.......... %.2f\n",total_venta);
+    
+    return 0;
+}
